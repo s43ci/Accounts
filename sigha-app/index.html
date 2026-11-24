@@ -214,10 +214,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .foot .fnote{position:absolute;bottom:100%;inset-inline:18px;color:var(--faint);font-size:12px;text-align:center}
 
 /* sky hero */
-.sky{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--r-xl);color:var(--on-sky);background:linear-gradient(180deg,var(--sky-1),var(--sky-2) 45%,var(--sky-3) 85%,var(--sky-4))}
-.sky::before,.sky::after{content:"";position:absolute;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,0));filter:blur(4px)}
-.sky::before{width:360px;height:130px;bottom:-50px;left:-80px}
-.sky::after{width:420px;height:150px;bottom:-70px;right:-120px;opacity:.85}
+.sky{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--r-xl);color:var(--on-sky);background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.16),transparent 55%),linear-gradient(155deg,var(--sky-1) 0%,#4A4FF0 45%,var(--sky-2) 75%,#6F86F8 100%)}
+.sky::before,.sky::after{content:"";position:absolute;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,0));filter:blur(6px);pointer-events:none}
+.sky::before{width:300px;height:110px;bottom:-60px;left:-90px;opacity:.5}
+.sky::after{width:340px;height:120px;bottom:-70px;right:-140px;opacity:.35}
 .sky .k{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:4px 10px 4px 12px;border-radius:999px;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
 .sky .k .i{width:14px;height:14px}
 .sky h2{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;margin-top:10px}
@@ -228,6 +228,17 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .hello h1{font-family:var(--f-display);font-weight:700;font-size:34px;line-height:1.3}
 .hello p{color:var(--muted)}
 .hero-card{padding:22px 20px 20px;display:flex;flex-direction:column;gap:16px;min-height:220px;justify-content:space-between}
+.hero-card.big{flex-direction:row;align-items:stretch;gap:12px;padding:24px 24px 0;min-height:240px}
+.hero-card .hc-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;padding-bottom:22px}
+.hero-card .hc-copy .btn{margin-top:auto;align-self:flex-start}
+.hero-card .tags{display:flex;gap:6px;flex-wrap:wrap}
+.hero-card .tags span{font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff}
+.hc-art{position:relative;width:170px;flex:none;align-self:flex-end;height:190px}
+.hc-art .pp{position:absolute;bottom:-18px;width:140px;padding:12% 10%;font-size:6.5px;line-height:1.6}
+.hc-art .pp:first-child{left:0;transform:rotate(-9deg);opacity:.55}
+.hc-art .pp:last-child{left:26px;transform:rotate(4deg);box-shadow:0 30px 50px -20px rgba(10,10,60,.6)}
+.hc-art .pp .ttl{font-size:10px}
+@container app (max-width: 420px){.hero-card.big h2{font-size:27px}.hc-art{width:118px;height:160px}.hc-art .pp{width:104px}.hc-art .pp:last-child{left:14px}.hero-card.big{padding:20px 18px 0}}
 .duo{display:grid;gap:12px}
 .ai-card{background:var(--night);color:var(--on-night);border-radius:var(--r-l);padding:18px;display:flex;gap:14px;align-items:center}
 .ai-card .ri{background:rgba(255,255,255,.08);color:var(--hl)}
@@ -539,7 +550,7 @@ function add(id,g,name,tab,fn,o){S.push({id:id,g:g,name:name,tab:tab,fn:fn,foot:
 var G1='الرئيسية والحساب',G2='بحث التخرج',G3='التقارير وترتيب بحث جاهز',G4='الاستبانات',G5='المستندات';
 
 add('s01',G1,'الرئيسية','home',function(){return '<div class="hello" style="padding-top:22px"><h1>هلا بيك</h1><p>شنو تريد تسوي اليوم؟</p></div>'+
- '<div class="duo"><a class="sky hero-card" href="#s12"><div><span class="k">'+I('spark')+'التنضيد التلقائي</span><h2>نضّد بحثك الآن</h2><p>غلاف، فهارس، ترقيم، هوامش ومصادر. ملف جاهز للطباعة.</p></div><span class="btn hl" style="align-self:flex-start">ابدأ الآن<span class="arr">'+I('arrow')+'</span></span></a>'+
+ '<div class="duo"><a class="sky hero-card big" href="#s12"><div class="hc-copy"><span class="k" style="align-self:flex-start">'+I('spark')+'التنضيد التلقائي</span><h2 style="margin:0">نضّد بحثك الآن</h2><div class="tags"><span>غلاف</span><span>فهارس</span><span>ترقيم</span><span>هوامش</span><span>مصادر</span></div><span class="btn hl">ابدأ الآن<span class="arr">'+I('arrow')+'</span></span></div><div class="hc-art" aria-hidden="true">'+P.blank(9)+P.toc()+'</div></a>'+
  '<div class="stack"><a class="ai-card" href="#s09"><span class="ri">'+I('spark')+'</span><span class="rt"><b>مساعدي</b><small>فهّمني شتريد تسوي وأدلّك عالخطوة الصح</small></span>'+I('chev','chev')+'</a>'+
  '<div class="blk" style="padding:6px 16px"><div class="rows">'+row('pen','إنشاء مستند','اكتب طلبك ونرتّبه لك بصيغة رسمية',{tone:'hl',go:'s45'})+row('chart','تقرير','واجهة ومحتوى بنفس محرر الفصول، فهرست ومصادر',{tone:'ind',go:'s33'})+'</div></div></div></div>'+
  '<div class="sec-h"><h2>الأكثر طلبًا</h2><a href="#s42">عرض الكل</a></div><div class="tiles">'+
